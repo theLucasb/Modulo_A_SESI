@@ -28,6 +28,7 @@
         const tela = document.getElementById("tela");
         const ctx = tela.getContext("2d");
 
+
         let desenhando = false;
 
         tela.onmousedown = () => {
@@ -50,6 +51,26 @@
 
         limpar.onclick = () =>
             ctx.clearRect(0, 0, tela.width, tela.height);
+            
+            ctx.fillStyle = "white"; // Declara o fundo com a cor branca
+            ctx.fillRect(0, 0, tela.width, tela.height); // Limpar
+            
+/*         exportar.onclick = () => {
+            const link = document.createElement("a"); // Cria a tag <a>
+            link.download = "minipaint.png";
+            link.href = tela.toDataURL();
+            link.click();
+        } */
+        
+
+        function baixarCanvas() {
+            const link = document.createElement("a"); // Cria a tag <a>
+            link.download = "minipaint.png";
+            link.href = tela.toDataURL("image/png");
+            link.click();
+        }
+
+        document.getElementById("exportar").onclick = baixarCanvas;
 
         // Desafio: Criar função para exportar e corrigir limpar completamente 
         
