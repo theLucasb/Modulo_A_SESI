@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeito Blur</title>
+    <style>
+        body {
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .codigo {
+            display: flex;
+            gap: 20px
+        }
+
+        .codigo span{
+            color: white;
+            font-size: 80px;
+            filter: blur(20px);
+            transition: 0.3s;
+        }
+
+        .codigo span:hover {
+            filter: blur(0);
+        }
+
+        .codigo span:hover + span {
+            filter: blur(6px);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="codigo">
+        <span>2</span>
+        <span>4</span>
+        <span>6</span>
+        <span>8</span>
+        <span>10</span>
+        <span>0</span>
+    </div>
+</body>
+</html>
