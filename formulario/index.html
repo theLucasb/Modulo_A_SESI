@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Validação</title>
+</head>
+<body>
+    <form>
+
+        <input type="text" id="nome" placeholder="Nome">
+        <p id="errorName"></p>
+
+        <input type="email" id="email" placeholder="Email">
+        <p id="errorEmail"></p>
+
+        <input type="password" id="password" placeholder="Senha">
+        <p id="errorSenha"></p>
+
+        <button id="botao" disabled>Enviar</button>
+
+    </form>
+
+    <script>
+        const nome = document.getElementById("nome");
+        const email = document.getElementById("email");
+        const senha = document.getElementById("senha");
+        const botao = document.getElementById("botao");
+
+        // Expressões regulares para email e senha
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const regexSenha = /^(?=.*[a-zA-Z])(?=.*[\W_]).{8,}$/;
+    </script>
+</body>
+</html>
