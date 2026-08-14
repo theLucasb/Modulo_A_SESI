@@ -1,35 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulário de Validação</title>
-</head>
-<body>
+
+    <style>
+      /* Criar estilo para o formulário: contendo cores, espaçamentos e posição */
+      body {
+        background: -webkit-linear-gradient(90deg, #0f172a, #4338ca);
+        background: linear-gradient(90deg, #0f172a, #4338ca);
+      }
+
+    </style>
+  </head>
+  <body>
     <form>
+      <input type="text" id="nome" placeholder="Nome" />
+      <p id="errorName"></p>
 
-        <input type="text" id="nome" placeholder="Nome">
-        <p id="errorName"></p>
+      <input type="email" id="email" placeholder="Email" />
+      <p id="errorEmail"></p>
 
-        <input type="email" id="email" placeholder="Email">
-        <p id="errorEmail"></p>
+      <input type="password" id="senha" placeholder="Senha" />
+      <p id="errorSenha"></p>
 
-        <input type="password" id="password" placeholder="Senha">
-        <p id="errorSenha"></p>
-
-        <button id="botao" disabled>Enviar</button>
-
+      <button id="botao" disabled>Enviar</button>
     </form>
 
     <script>
-        const nome = document.getElementById("nome");
-        const email = document.getElementById("email");
-        const senha = document.getElementById("senha");
-        const botao = document.getElementById("botao");
+      const nome = document.getElementById("nome");
+      const email = document.getElementById("email");
+      const senha = document.getElementById("senha");
+      const botao = document.getElementById("botao");
 
-        // Expressões regulares para email e senha
-        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const regexSenha = /^(?=.*[a-zA-Z])(?=.*[\W_]).{8,}$/;
+      // Expressões regulares para email e senha
+      const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      const regexSenha = /^(?=.*[a-zA-Z])(?=.*[\W_]).{8,}$/;
+
+      // Função para validar formulário
+      function validar() {
+        let valido = true;
+
+        // Validação do campo nome
+        if (nome.value === "") {
+          errorName.innerText = "Nome obrigatório";
+          valido = false;
+        } else {
+          errorName.innerText = "";
+        }
+
+        // Validação do campo email
+        if (!regexEmail.test(email.value)) {
+          errorEmail.innerText = "Email inválido.";
+          valido = false;
+        } else {
+          errorEmail.innerText = "";
+        }
+
+        // Desafio: Criar validação do campo senha
+        if (!regexSenha.test(senha.value)) {
+          errorSenha.innerText = "Senha inválida";
+          valido = false;
+        } else {
+          errorSenha.innerText = "";
+        }
+
+        botao.disabled = !valido;
+      }
+
+      nome.addEventListener("input", validar);
+      email.addEventListener("input", validar);
+      senha.addEventListener("input", validar);
     </script>
-</body>
+  </body>
 </html>
